@@ -1,0 +1,97 @@
+UCHSHOPPLWANPAATILIA:
+
+Unnecessarily Complicated Highly Specific Honor-Oriented Purposeless Programming Language With Arbitary Numeric Properties And A Totally Inexplicable Lack of Instruction Arguments
+
+
+everything is case-sensitive
+includes a hole, with capability of 3 numbers, it starts closed
+includes a stack
+includes 3 registers (R, RR, and RRR)
+R, RR and RRR are always initialized to 194 at program start
+Every 80ms of program execution, the stack will evolve, meaning numbers will be increased by one
+
+Empty lines are actually counted when counting for 'runback', 'goto', and 'forward' instructions
+
+When the program starts, it prints a gentlemans agreement, and you have to type in 'yes' to run the program.
+
+HONOR and Gentlemen's Agreement:
+This is an important thing - you start the program with 100 honor. Every instruction executed, you lose 1 honor, and every comment you lose 2.
+If you have no honor, the program will ask you to agree on the gentlemans agreement, to restore 100 honor.
+You get one more honor every empty line if you have less than 10 honor. If you have more than 10 honor, and use a blank line, you will be instead punished, losing 2 honor per whiteline.
+Tip: 'repeat' followed by an empty line also works.
+You can make an agreement with the devil too, by setting R to 666, and the top item in the stack to 666 too.
+It will set your honor to 79 always, but can be done at any moment. 
+
+comment     Everything in the line after this is a comment. Comments can only be done in new lines. 
+            You spend 2 honor to make a comment, as it is not an honored behaviour to stop a battle to comment stuff.
+
+look-around (Only works if hole is open) You look around searching for the open hole, and gets distracted, so the next instruction is skipped.
+
+runback     goes back 8 or 9 instructions, depending on the instruction index being odd or even. If the hole is open, you fall on it, breaking the program.
+
+goto        goes exactly to the middle of the program. Ex: if the program has 7 instructions, sets PC to 4 (the middle). 
+            If the program has an even number of instructions, it WILL break.
+            If the hole is open, you fall on it, breaking the program.
+
+forward     goes forward 8 or 9 instructions, depending on the instruction index being even or odd. If the hole is open, you fall on it, breaking the program.
+
+maybe       maybe executes the next instruction, chances depend on 100 minus the number of lines of the program, normalized to a number between 0 and 1, plus 4, 
+            multiplied by 10. Normalizing is done by summing up all digits of the number until it has only one digit, and dividing by 10. (norm(92) -> 9+2=11 -> 1+1=2 ->2/10 -> 0.2)
+            ex:     'maybe' on line 10 of a program with 43 lines has a  (100 - (normalize(43) + 4) * 10)  =>  100 - ((0.7 + 4) * 10)  =>  53% chance of executing
+            This means min chance of executing is (100 - ((norm(9) + 4) * 10)) -> 100-49 -> 51% 
+            And max chance is (100 - ((norm(1) + 4) * 10)) -> 100-41 -> 59%
+            This guarantees that it always has at least 50% chance of running but never reaches 60%
+
+push        Stores the value in R in the stack, then pushes 0 to the stack
+
+sum         Sums the values of the two top items in the stack, and them removes them from the stack, and store the result in R
+
+sub         Subtracts the value of the second item in the stack from the top item (stack.pop() - stack.pop()), and them removes them from the stack, and store the result in R
+
+close       Close the hole
+
+bury        Put an input, R, and the top value from stack in a hole, ordered in increasing order. The hole must have been previously open. 
+            The value from stack is NOT popped, it is copied, and R is NOT modified.
+            The input is collected from the user, and may be any char, that will be converted to a number using a special table.
+
+keep        Get value at position R/2 from the hole, and puts in R. This means only 2, 4 and 6 are valid values for R.
+
+glitch      Causes the number in R to maybe glitch, meaning a random bit of it can be shifted.
+
+dig         Opens the hole if it is closed. If the hole is already open, you fall inside it, causing the program to break.
+
+Lamark      Stabilizes the stack with Lamark ideas, preventing it to evolve for the next 80ms
+
+if-even     Executes the next 5 instructions if the number in R is even
+
+if-nzero    Executes the next 3 instructions if the number in R is zero
+
+if-gold     Executes the next 20 instructions only if the number in R is one of the numbers related to Gold in the periodic table (97, 79, or 196)
+
+duplicate   Executes the next instruction, then executes the last instruction, then executes last instruction, then next instruction again, then skips next instruction
+
+--          Decreases the value in R in 2
+
++++         Increases the value in R in 3
+
+[R<>RR]     Swaps values of R and RR 
+
+[RR<>RRR]   Swaps values of RR and RRR
+
+[R<>RRR]    Swaps values of R and RRR 
+
+[R<>S]      Swaps R with the top item of the stack
+
+!do         No-Op. Does nothing.
+
+pad         While R < 0: R++. This actually takes a variable time to run, as multiple iterations will be done. So be sure to 'Lamark' things from time to time.
+
+unpad       While R > 0: R--. This actually takes a variable time to run, as multiple iterations will be done. So be sure to 'Lamark' things from time to time.
+
+printc      Prints a 3x3 double-bordered square with your current amount of honor under it (I said 'under', not 'inside')
+
+print       Prints R as a char, according to the conversion table. See 'bury' for more info on it.
+
+wait        Wait R ms
+
+repeat      Repeats next instruction R times
